@@ -1,14 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const responseheaderMiddleware = require("./responseheaderMiddleware");
+const addResponseHeader = require("add-response-header");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get("/", responseheaderMiddleware, (req, res)=>{
+app.get("/", addResponseHeader, (req, res)=>{
     res.json({status: 200, message: "Hello World"});
 });
 
